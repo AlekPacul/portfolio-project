@@ -5,6 +5,8 @@ import vue from '@vitejs/plugin-vue'
 import tailwindcss from '@tailwindcss/vite'
 import { compression } from 'vite-plugin-compression2'
 
+import { cloudflare } from "@cloudflare/vite-plugin";
+
 export default defineConfig({
   plugins: [
     vue(),
@@ -13,6 +15,7 @@ export default defineConfig({
     compression({ algorithms: ['brotliCompress'], exclude: [/\.(png|jpe?g|gif|webp|ico|svg)$/] }),
     // gzip fallback for older hosts
     compression({ algorithms: ['gzip'], exclude: [/\.(png|jpe?g|gif|webp|ico|svg)$/] }),
+    cloudflare()
   ],
   build: {
     // Terser: more aggressive minification than esbuild default
