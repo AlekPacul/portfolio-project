@@ -1,12 +1,10 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import IconGitHub from '@/components/icons/IconGitHub.vue'
 import IconLinkedIn from '@/components/icons/IconLinkedIn.vue'
 
 const year = computed(() => new Date().getFullYear())
 
 const socials = [
-  { label: 'GitHub', href: 'https://github.com', icon: IconGitHub },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/gregoriuswisnu/', icon: IconLinkedIn },
 ]
 </script>
