@@ -1,88 +1,111 @@
+<script setup lang="ts">
+import SectionHeader from '@/components/SectionHeader.vue'
+
+const timeline = [
+  {
+    period: 'Mar 2025 – Present',
+    role: 'Mobile Developer',
+    company: 'Flight Centre Travel Group',
+    meta: 'Full-time · Remote',
+    description: 'Develop and maintain multiple applications using Turborepo and Expo. Improved app performance from 1 FPS to stable 50+ FPS. Enhanced native modules for Salesforce Evergage, integrated Auth0 with cookie-based session management in webview, and created shared libraries inside a monorepo to reduce code repetition.',
+    highlights: ['React Native', 'Expo', 'Turborepo', 'Auth0', 'Salesforce'],
+  },
+  {
+    period: 'Mar 2025 – Present',
+    role: 'Software Developer',
+    company: 'Softwareseni',
+    meta: 'Full-time · Remote',
+    description: 'Develop React Native applications as part of a software consultancy, delivering mobile solutions across client projects.',
+    highlights: ['React Native', 'TypeScript'],
+  },
+  {
+    period: 'Oct 2024 – Jan 2025',
+    role: 'Mobile Developer',
+    company: 'Compass Financial Technology Pte Ltd.',
+    meta: 'Full-time · Remote',
+    description: 'Built a trading application with real-time data via WebSocket. Implemented interactive candlestick charts using React Native Skia and Gesture Handler, and built technical indicators (MACD, Stochastic, RSI) with d3.js.',
+    highlights: ['React Native', 'WebSocket', 'React Native Skia', 'd3.js', 'Gesture Handler'],
+  },
+  {
+    period: 'Sept 2024 – Oct 2024',
+    role: 'Mobile Developer',
+    company: 'Freelance',
+    meta: 'Contract · Remote',
+    description: 'Built a check-in/check-out application using React Native Vision Camera and AWS Rekognition for real-time facial recognition.',
+    highlights: ['React Native', 'Vision Camera', 'AWS Rekognition'],
+  },
+  {
+    period: 'Jan 2023 – Aug 2024',
+    role: 'Full Stack Developer',
+    company: 'Telkom Indonesia',
+    meta: 'Full-time · Bandung',
+    description: 'Built a new CMS for Telkom Partner Network with React on the frontend and Node.js on the backend. Managed state with Redux (thunk + persist), used MongoDB as the database, and Minio for object storage.',
+    highlights: ['React', 'Node.js', 'Redux', 'MongoDB', 'Minio'],
+  },
+  {
+    period: 'Mar 2022 – Aug 2024',
+    role: 'Mobile Developer',
+    company: 'Telkom Indonesia',
+    meta: 'Full-time · Bandung',
+    description: 'Built and maintained Mobile TPN, a React Native app for the Telkom Partner Network. Implemented Redux state management, TypeScript components, and Firebase Cloud Messaging for push notifications.',
+    highlights: ['React Native', 'TypeScript', 'Redux', 'Firebase'],
+  },
+]
+
+const education = {
+  degree: 'Bachelor of Computer Science',
+  institution: 'Binus University',
+  period: '2018 – 2022',
+}
+</script>
+
 <template>
-  <section class="py-24">
-    <div class="max-w-6xl mx-auto px-6">
-      <SectionHeader label="About Me" title="Who I Am" />
+  <section class="py-28 px-6 md:px-16 bg-surface">
+    <div class="max-w-7xl mx-auto">
+      <SectionHeader label="Career" title="Experience" />
 
-      <div class="mt-16 grid lg:grid-cols-2 gap-16 items-center">
-        <!-- Avatar placeholder -->
-        <div class="flex justify-center lg:justify-start">
-          <div class="relative">
-            <div class="w-64 h-64 rounded-2xl bg-gradient-to-br from-indigo-500 to-cyan-500 flex items-center justify-center text-8xl shadow-2xl shadow-indigo-500/25">
-              👤
+      <div class="mt-20 flex flex-col gap-3">
+        <div
+          v-for="item in timeline"
+          :key="item.role + item.company"
+          class="p-8 rounded-xl bg-surface-container hover:bg-surface-high transition-colors"
+        >
+          <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-2 mb-4">
+            <div>
+              <p class="text-xs tracking-technical uppercase text-on-surface-variant mb-1">{{ item.period }}</p>
+              <h3 class="text-on-surface font-semibold text-lg tracking-display">{{ item.role }}</h3>
+              <p class="text-on-surface-variant text-sm mt-0.5">{{ item.company }}</p>
             </div>
-            <div class="absolute -bottom-4 -right-4 w-32 h-32 bg-indigo-600/20 rounded-2xl blur-xl" />
-          </div>
-        </div>
-
-        <!-- Bio -->
-        <div>
-          <h2 class="text-3xl font-bold text-white mb-6">
-            I'm a developer who loves building things for the web.
-          </h2>
-          <div class="space-y-4 text-gray-400 leading-relaxed">
-            <p>
-              With X+ years of experience in frontend and backend development, I specialize in creating performant, scalable web applications using modern technologies.
-            </p>
-            <p>
-              I'm passionate about clean code, great user experiences, and continuously learning new tools. When I'm not coding, you'll find me exploring open-source projects or writing about software development.
-            </p>
+            <span class="text-xs text-on-surface-variant tracking-technical shrink-0">{{ item.meta }}</span>
           </div>
 
-          <div class="mt-8 flex flex-wrap gap-4">
-            <a
-              href="/resume.pdf"
-              class="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium transition-colors"
+          <p class="text-on-surface-variant text-sm leading-relaxed mb-5">{{ item.description }}</p>
+
+          <div class="flex flex-wrap gap-2">
+            <span
+              v-for="tag in item.highlights"
+              :key="tag"
+              class="px-3 py-0.5 rounded-full text-xs font-medium bg-surface-highest text-on-surface-variant tracking-technical"
             >
-              Download Resume
-            </a>
-            <RouterLink
-              to="/contact"
-              class="px-5 py-2.5 rounded-xl border border-gray-700 hover:border-gray-500 text-gray-300 hover:text-white font-medium transition-colors"
-            >
-              Contact Me
-            </RouterLink>
+              {{ tag }}
+            </span>
           </div>
         </div>
       </div>
 
-      <!-- Timeline -->
-      <div class="mt-24">
-        <h3 class="text-2xl font-bold text-white mb-12 text-center">Experience</h3>
-        <div class="relative border-l border-gray-800 ml-4 space-y-12">
-          <div v-for="item in timeline" :key="item.year" class="relative pl-8">
-            <div class="absolute -left-2 top-1.5 w-4 h-4 rounded-full bg-indigo-600 border-2 border-gray-950" />
-            <span class="text-indigo-400 font-mono text-sm">{{ item.year }}</span>
-            <h4 class="text-white font-semibold text-lg mt-1">{{ item.role }}</h4>
-            <p class="text-gray-500 text-sm mb-2">{{ item.company }}</p>
-            <p class="text-gray-400 text-sm leading-relaxed">{{ item.description }}</p>
+      <!-- Education -->
+      <div class="mt-16">
+        <SectionHeader label="Education" title="Background" />
+        <div class="mt-8 p-8 rounded-xl bg-surface-container">
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-1">
+            <div>
+              <h3 class="text-on-surface font-semibold tracking-display">{{ education.degree }}</h3>
+              <p class="text-on-surface-variant text-sm mt-0.5">{{ education.institution }}</p>
+            </div>
+            <span class="text-xs text-on-surface-variant tracking-technical shrink-0">{{ education.period }}</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 </template>
-
-<script setup lang="ts">
-import SectionHeader from '@/components/SectionHeader.vue'
-
-const timeline = [
-  {
-    year: '2024 – Present',
-    role: 'Senior Frontend Developer',
-    company: 'Company Name',
-    description: 'Leading frontend architecture for a SaaS platform used by thousands of customers worldwide.',
-  },
-  {
-    year: '2022 – 2024',
-    role: 'Full-Stack Developer',
-    company: 'Another Company',
-    description: 'Built and maintained multiple client-facing applications using Vue.js and Node.js.',
-  },
-  {
-    year: '2020 – 2022',
-    role: 'Junior Developer',
-    company: 'Startup',
-    description: 'Contributed to building RESTful APIs and responsive UI components.',
-  },
-]
-</script>

@@ -1,7 +1,33 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #6366f1;
-  --color-primary-dark: #4f46e5;
-  --color-accent: #06b6d4;
+  --color-surface: #0e0e0e;
+  --color-surface-low: #131313;
+  --color-surface-container: #191919;
+  --color-surface-high: #1f1f1f;
+  --color-surface-highest: #262626;
+  --color-surface-bright: #2c2c2c;
+  --color-on-surface: #e5e5e5;
+  --color-on-surface-variant: #ababab;
+  --color-primary: #c6c6c7;
+  --color-primary-container: #454747;
+  --color-primary-dim: #b8b9b9;
+  --color-outline-variant: #484848;
+}
+
+@layer utilities {
+  .signature-sweep {
+    background: linear-gradient(135deg, #c6c6c7 0%, #454747 100%);
+  }
+  .glass-nav {
+    background: rgba(38, 38, 38, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+  .tracking-display {
+    letter-spacing: -0.02em;
+  }
+  .tracking-technical {
+    letter-spacing: 0.05em;
+  }
 }

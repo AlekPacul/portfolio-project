@@ -1,104 +1,84 @@
+<script setup lang="ts">
+import SectionHeader from '@/components/SectionHeader.vue'
+
+const techStack = ['React Native', 'TypeScript', 'Expo', 'Firebase', 'Redux', 'Salesforce', 'd3.js', 'Node.js']
+
+const competencies = [
+  {
+    label: 'Mobile Development',
+    description: 'Building polished, cross-platform mobile apps with React Native and Expo that feel truly native on both iOS and Android.',
+  },
+  {
+    label: 'UI & Experience',
+    description: 'Crafting smooth animations, gesture-driven interactions, and pixel-perfect interfaces that users love.',
+  },
+  {
+    label: 'Integration',
+    description: 'Connecting mobile apps to REST and GraphQL APIs, push notifications, and cloud backends with confidence.',
+  },
+  {
+    label: 'AI-Powered Workflow',
+    description: 'Leveraging agentic AI tools — Claude Code, GitHub Copilot, and Model Context Protocol (MCP) integrations — to accelerate development cycles, reduce boilerplate, and ship higher-quality software faster.',
+  },
+]
+</script>
+
 <template>
   <!-- Hero -->
-  <section class="relative min-h-[90vh] flex items-center overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-br from-indigo-950/50 via-gray-950 to-gray-950 pointer-events-none" />
-    <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-indigo-600/10 rounded-full blur-3xl pointer-events-none" />
-
-    <div class="relative max-w-6xl mx-auto px-6 py-24">
-      <p class="text-indigo-400 font-mono text-sm mb-4 tracking-wider">Hello, world 👋</p>
-      <h1 class="text-5xl md:text-7xl font-extrabold text-white leading-tight mb-6">
-        I'm <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400">Your Name</span>,<br />
-        Full-Stack Developer
-      </h1>
-      <p class="text-gray-400 text-lg md:text-xl max-w-2xl mb-10 leading-relaxed">
-        I build fast, accessible, and beautiful web applications. Focused on Vue.js, Node.js, and modern cloud infrastructure.
+  <section class="min-h-[90vh] flex items-end pb-28 px-6 md:px-16 bg-surface">
+    <div class="w-full max-w-7xl mx-auto">
+      <p class="text-xs tracking-technical uppercase text-on-surface-variant mb-8">
+        React Native Developer · Bandung, Indonesia
       </p>
-      <div class="flex flex-wrap gap-4">
+
+      <h1 class="text-6xl md:text-9xl font-bold text-on-surface tracking-display leading-none mb-10">
+        Gregorius Wisnu
+      </h1>
+
+      <!-- Tech stack pills -->
+      <div class="flex flex-wrap gap-2 mb-14">
+        <span
+          v-for="tech in techStack"
+          :key="tech"
+          class="px-3 py-1 rounded-full text-xs font-medium tracking-technical text-on-surface-variant bg-surface-highest"
+        >
+          {{ tech }}
+        </span>
+      </div>
+
+      <!-- CTAs -->
+      <div class="flex flex-wrap items-center gap-6">
         <RouterLink
           to="/projects"
-          class="px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold transition-colors shadow-lg shadow-indigo-600/25"
+          class="px-6 py-3 rounded-md text-sm font-semibold text-surface signature-sweep hover:opacity-90 transition-opacity"
         >
           View Projects
         </RouterLink>
         <RouterLink
-          to="/contact"
-          class="px-6 py-3 rounded-xl border border-gray-700 hover:border-gray-500 text-gray-300 hover:text-white font-semibold transition-colors"
+          to="/about"
+          class="text-sm font-medium text-on-surface-variant hover:text-primary transition-colors hover:underline underline-offset-4"
         >
-          Get In Touch
+          Experience →
         </RouterLink>
       </div>
     </div>
   </section>
 
-  <!-- Skills -->
-  <section class="py-24 bg-gray-900/50">
-    <div class="max-w-6xl mx-auto px-6">
-      <SectionHeader label="What I Do" title="Skills & Technologies" />
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-12">
-        <SkillCard v-for="skill in skills" :key="skill.name" v-bind="skill" />
-      </div>
-    </div>
-  </section>
+  <!-- Core Competencies -->
+  <section class="py-28 px-6 md:px-16 bg-surface-low">
+    <div class="max-w-7xl mx-auto">
+      <SectionHeader label="What I Do" title="Core Competencies" />
 
-  <!-- Featured Projects -->
-  <section class="py-24">
-    <div class="max-w-6xl mx-auto px-6">
-      <SectionHeader label="My Work" title="Featured Projects" />
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
-        <ProjectCard v-for="project in featuredProjects" :key="project.title" v-bind="project" />
-      </div>
-      <div class="text-center mt-10">
-        <RouterLink
-          to="/projects"
-          class="inline-flex items-center gap-2 text-indigo-400 hover:text-indigo-300 font-medium transition-colors"
+      <div class="mt-16 grid md:grid-cols-3 gap-4">
+        <div
+          v-for="item in competencies"
+          :key="item.label"
+          class="p-8 rounded-xl bg-surface-container hover:bg-surface-high transition-colors"
         >
-          See all projects
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-          </svg>
-        </RouterLink>
+          <p class="text-xs tracking-technical uppercase text-on-surface-variant mb-4">{{ item.label }}</p>
+          <p class="text-on-surface text-sm leading-relaxed">{{ item.description }}</p>
+        </div>
       </div>
     </div>
   </section>
 </template>
-
-<script setup lang="ts">
-import SectionHeader from '@/components/SectionHeader.vue'
-import SkillCard from '@/components/SkillCard.vue'
-import ProjectCard from '@/components/ProjectCard.vue'
-
-const skills = [
-  { name: 'Vue.js', icon: '⚡', level: 'Expert' },
-  { name: 'TypeScript', icon: '🔷', level: 'Advanced' },
-  { name: 'Node.js', icon: '🟢', level: 'Advanced' },
-  { name: 'Tailwind CSS', icon: '🎨', level: 'Expert' },
-  { name: 'PostgreSQL', icon: '🐘', level: 'Intermediate' },
-  { name: 'Docker', icon: '🐳', level: 'Intermediate' },
-  { name: 'Git', icon: '🔀', level: 'Advanced' },
-  { name: 'REST APIs', icon: '🔗', level: 'Advanced' },
-]
-
-const featuredProjects = [
-  {
-    title: 'Project Alpha',
-    description: 'A full-stack web application built with Vue 3 and Node.js, featuring real-time updates and a modern UI.',
-    tags: ['Vue 3', 'Node.js', 'PostgreSQL'],
-    githubUrl: 'https://github.com',
-    liveUrl: '#',
-  },
-  {
-    title: 'Project Beta',
-    description: 'An e-commerce platform with a headless CMS integration, optimized for performance and SEO.',
-    tags: ['Nuxt.js', 'Tailwind', 'Stripe'],
-    githubUrl: 'https://github.com',
-    liveUrl: '#',
-  },
-  {
-    title: 'Project Gamma',
-    description: 'A data visualization dashboard displaying real-time analytics with interactive charts and filters.',
-    tags: ['Vue 3', 'D3.js', 'WebSocket'],
-    githubUrl: 'https://github.com',
-    liveUrl: '#',
-  },
-]
-</script>
